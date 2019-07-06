@@ -6,7 +6,8 @@
 - CSS
 > [使用定位来改变DIV的宽高伸缩方向](https://github.com/guxiangyuan11/Own_Article/blob/master/CSS/%E4%BD%BF%E7%94%A8%E5%AE%9A%E4%BD%8D%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0%E5%8E%9F%E7%82%B9.md)
 - JAVASCRIPT
-> [关于setTimeout/setInterval的第三个参数](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/%E5%85%B3%E4%BA%8EsetTimeout/setInterval%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0.md)
+> * [关于setTimeout/setInterval的第三个参数](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/%E5%85%B3%E4%BA%8EsetTimeout/setInterval%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0.md)
+> * [前端JS常用工具函数](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/JS%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E9%9B%86%E5%90%88.md)
 - HTML
 - VUE
 
