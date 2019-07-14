@@ -42,3 +42,102 @@
 ![](../img/html_semantic/1.png)
 
 由此大家应该知道了正确的去使用语义化的重要性，那么接下来我介绍几种比较常用的语义化标签
+
+### 标签介绍
+
+在中国古代小说中有“章 - 回”的概念，而在西方的戏剧也有幕的区分，那么在HTML中也是有如此的一个结构树，通过语义标签来生成一个树目录，我们需要形成一个概念，一篇文档会有一个树形的目录结构，它由各个级别的标题组成。这个树形结构可能不会跟 HTML 元素的嵌套关系一致。
+~~~
+<h1>标题1</h1>
+<h2>标题2</h1>
+<h3>标题3</h1>
+<h4>标题4</h1>
+<h5>标题5</h1>
+~~~
+通过不同H标签能生成不同层级的标题,告诉读者内容的分层
+
+![](../img/html_semantic/2.png)
+
+从 HTML 5 开始，我们有了 section 标签，这个标签可不仅仅是一个“有语义的 div”，它会改变 h1-h6 的语义。section 的嵌套会使得其中的 h1-h6 下降一级，
+因此，在 HTML5 以后，我们只需要 section 和 h1 就足以形成文档的树形结构：
+
+~~~
+<section>
+    <h1>标题1</h1>
+    <section>
+        <h1>标题2</h1>
+        <section>
+            <h1>标题3</h1>
+            <section>
+                <h1>标题4</h1>
+            </section>
+        </section>
+    </section>
+</section>
+~~~
+
+![](../img/html_semantic/3.png)
+
+使用header,nav,aside,footer,article构建一个具有语义化的多文章结构
+
+~~~
+<body>
+   <header>...</header>
+   <article>
+       <header>...</header>
+       <section>...</section>
+       <section>...</section>
+       <section>...</section>
+       <footer>...</footer>
+       </article><article>
+   </article>
+   <article>
+   ...
+   </article>
+   <footer>
+   ...
+   </footer>
+</body>
+~~~
+
+body 里面有自己的 header 和 footer，然后里面是竖篇的 article，每一个 article 里面都有自己的 header、section、footer。这是一个典型的多文章结构。
+
+* header，如其名，通常出现在前部，表示导航或者介绍性的内容。
+* footer，通常出现在尾部，包含一些作者信息、相关链接、版权信息等。
+
+* header 和 footer 一般都是放在 article 或者 body 的直接子元素，但是标准中并没有明确规定，footer 也可以和 aside，nav，section 相关联（header 不存在关
+联问题）。
+
+* aside 表示跟文章主体不那么相关的部分，它可能包含导航、广告等工具性质的内容。aside 很容易被理解为侧边栏，实际上二者是包含关系，侧边栏是 aside，aside 不一定是侧边栏。
+aside 和 header 中都可能出现导航（nav 标签），二者的区别是，header 中的导航多数是到文章自己的目录，而 aside 中的导航多数是到关联页面或者是整站地
+图。
+
+
+* abbr 表示缩写，我们再使用网络地址时输入的www，就是 World Wide Web 的缩写，所以在使用这串缩写时应该使用 abbr 标签
+~~~
+<abbr title='World Wide Web'>www</abbr>
+~~~
+
+* hr 我们经常用hr标签来显示一条分割线，就像这样：
+
+![](../img/html_semantic/4.png)
+
+  但是，根据标准定义hr 表示故事走向的转变或者话题的转变，显然此处两个标题并非这种关系，所以我们应该使用 CSS 的 border 来把它当作纯视觉效果来实现，所以这里是不需要用 hr 的。
+
+* blockquote,q,cite  三个跟引述相关的标签blockquote 表示段落级引述内容，q 表示行内的引述内容，cite 表示引述的作品名。
+
+* ol,ul--ol 和 ul 的区分是内容是否有顺序关系，每一项的前面不论是数字还是点，都不会影响语义的判断。所以，你可以注意一下这里，不要因为视觉表现效果，而改变语义的使用
+
+* pre,samp 对于一些非常严格的说明内容时，我们通常***不需要浏览器帮我们做自动换行***，因此使用了 pre 标签，表示这部分内容是预先排版过的，不需要浏览器进行排版。
+~~~
+<pre><samp>
+GET /home.html HTTP/1.1
+Host: www.example.org
+</samp></pre>
+~~~
+![](../img/html_semantic/5.png)
+
+又因为这是一段计算机程序的示例输出，所以我们可以使用 samp 标签
+
+以上介绍了目前HTML所带的部分语义化标签，其他的标签s,i,b,u,data,time，main等等还有很多的其他语义化标签，可以到[runoob](https://www.runoob.com/tags/html-reference.html)里面查到
+
+事实上由于HTML并不是一门严格或说是严谨的编程语言，我们可以自由的进行HTML结构搭建，写下这篇文章也不是说在写HTML的时候，全部使用语义化标签，因为在使用一些标签时会引来大量的争议，所以我们尽可能使用我们熟悉且有把握的语义标签。
