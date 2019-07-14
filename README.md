@@ -9,6 +9,7 @@
 > * [关于setTimeout/setInterval的第三个参数](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/%E5%85%B3%E4%BA%8EsetTimeout/setInterval%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0.md)
 > * [前端JS常用工具函数](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/JS%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E9%9B%86%E5%90%88.md)
 - HTML
+> * [是否要用HTML语义化](https://github.com/guxiangyuan11/Own_Article/blob/master/HTML/%E6%98%AF%E5%90%A6%E8%A6%81%E7%94%A8HTML%E8%AF%AD%E4%B9%89%E5%8C%96.md)
 - VUE
 
 
