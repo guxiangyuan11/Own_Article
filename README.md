@@ -12,6 +12,8 @@
 > * [是否要用HTML语义化](https://github.com/guxiangyuan11/Own_Article/blob/master/HTML/%E6%98%AF%E5%90%A6%E8%A6%81%E7%94%A8HTML%E8%AF%AD%E4%B9%89%E5%8C%96.md)
 - VUE
 
+- 外文翻译（一些国外的文章）
+
 
 > 不定时更新,并会同步更新到简书上
 [简书](https://www.jianshu.com/u/fdc9dbfc5a32)
