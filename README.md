@@ -13,6 +13,7 @@
 - VUE
 
 - 外文翻译（一些国外的文章）
+>* [12 Tips for Improving JavaScript Performance](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/12%20Tips%20for%20Improving%20JavaScript%20Performance.md)
 
 
 > 不定时更新,并会同步更新到简书上
