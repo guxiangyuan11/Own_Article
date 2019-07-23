@@ -16,6 +16,9 @@
 >* [12 Tips for Improving JavaScript Performance](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/12%20Tips%20for%20Improving%20JavaScript%20Performance.md)
 - other
 > * [海外招聘的一些事](https://github.com/guxiangyuan11/Own_Article/blob/master/other/%E5%85%B3%E4%BA%8E%E6%B5%B7%E5%A4%96%E6%8B%9B%E8%81%98%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B.md)
+> * [前端MVVM模式从理论到实战 （一）](https://www.jianshu.com/p/e2ac3260c767)
+> * [前端MVVM模式从理论到实战 （二）](https://www.jianshu.com/p/7088249276de)
+> * [前端MVVM模式从理论到实战 （三）](https://www.jianshu.com/p/ca9404cf2f9b) 待续。。。
 
 > 不定时更新,并会同步更新到简书上
 [简书](https://www.jianshu.com/u/fdc9dbfc5a32)
