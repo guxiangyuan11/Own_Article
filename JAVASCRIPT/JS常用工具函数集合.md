@@ -349,3 +349,76 @@ function GetUrlParam(){
     return params;
 }
 ~~~
+*getPropByPath：根据字符串路径获取对象属性：‘obj[0].count’
+~~~
+function getPropByPath(obj, path, strict) {
+    let tempObj = obj;
+    path = path.replace(/\[(\w+)\]/g, '.$1'); //将[0]转化为.0
+    path = path.replace(/^\./, ''); //去除开头的.
+
+    let keyArr = path.split('.'); //根据.切割
+    let i = 0;
+    for (let len = keyArr.length; i < len - 1; ++i) {
+        if (!tempObj && !strict) break;
+        let key = keyArr[i];
+        if (key in tempObj) {
+            tempObj = tempObj[key];
+        } else {
+            if (strict) {//开启严格模式，没找到对应key值，抛出错误
+                throw new Error('please transfer a valid prop path to form item!');
+            }
+            break;
+        }
+    }
+    return {
+        o: tempObj, //原始数据
+        k: keyArr[i], //key值
+        v: tempObj ? tempObj[keyArr[i]] : null // key值对应的值
+    };
+};
+~~~
+* isStatic: 检测数据是不是除了symbol外的原始数据
+
+~~~
+function isStatic(value) {
+    return (
+        typeof value === 'string' ||
+        typeof value === 'number' ||
+        typeof value === 'boolean' ||
+        typeof value === 'undefined' ||
+        value === null
+    )
+}
+~~~
+* 数组去重，返回一个新数组
+~~~
+function unique(arr){
+    if(!isArrayLink(arr)){ //不是类数组对象
+        return arr
+    }
+    let result = []
+    let objarr = []
+    let obj = Object.create(null)
+
+    arr.forEach(item => {
+        if(isStatic(item)){//是除了symbol外的原始数据
+            let key = item + '_' + getRawType(item);
+            if(!obj[key]){
+                obj[key] = true
+                result.push(item)
+            }
+        }else{//引用类型及symbol
+            if(!objarr.includes(item)){
+                objarr.push(item)
+                result.push(item)
+            }
+        }
+    })
+
+    return result
+}
+~~~
+* 使用Object.assign可以钱克隆一个对象：
+~~~
+let clone = Object.assign({}, target);
+~~~
