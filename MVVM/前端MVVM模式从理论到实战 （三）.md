@@ -107,3 +107,21 @@ var obj = {
 > 上面fragment可以看成是<fragment></fragment> 的节点对象，但是注意这里fragment并没有实际意义对于document来说，在添加它到document中的时候只会添加它的子孙节点，而忽略其本身，它只是一个容器。
 
 在后面的章节里面会用到此对象来进行界面实时更新，和模板解析
+
+#####nodeType
+
+节点类型--在我们编写HTML的时候，会编写很多的节点，如Document，Element，Attr，text等等类型的节点，那么我们需要判断我们拿到的节点是什么类型的节点时，这个属性能够很好的帮助我们去判断
+
+其中Element的nodeType值是1，Attr是2，text是3，我们常用的也是这三个，不过还有其他的类型如 Comment，Document， DocumentFragment等等，具体可看[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B%E5%B8%B8%E9%87%8F)上的描述
+
+~~~
+<div id="title">HelloWorld</div>
+<script>
+    window.onload=function(){
+        var el = document.getElementById('title')
+        var textNode = el.firstChild
+        var attrNode = el.getAttributeNode('id')
+        console.log(el.nodeType,attrNode.nodeType,textNode.nodeType) // 1 2 3
+    }
+</script>
+~~~
