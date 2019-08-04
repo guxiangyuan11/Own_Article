@@ -12,8 +12,6 @@
 > * [是否要用HTML语义化](https://github.com/guxiangyuan11/Own_Article/blob/master/HTML/%E6%98%AF%E5%90%A6%E8%A6%81%E7%94%A8HTML%E8%AF%AD%E4%B9%89%E5%8C%96.md)
 - VUE
 
-- 外文翻译（一些国外的文章）
->* [12 Tips for Improving JavaScript Performance](https://github.com/guxiangyuan11/Own_Article/blob/master/JAVASCRIPT/12%20Tips%20for%20Improving%20JavaScript%20Performance.md)
 - other
 > * [海外招聘的一些事](https://github.com/guxiangyuan11/Own_Article/blob/master/other/%E5%85%B3%E4%BA%8E%E6%B5%B7%E5%A4%96%E6%8B%9B%E8%81%98%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B.md)
 > * [前端MVVM模式从理论到实战 （一）](https://www.jianshu.com/p/e2ac3260c767)
