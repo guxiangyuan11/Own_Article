@@ -19,7 +19,9 @@
 > * [前端MVVM模式从理论到实战 （三）](https://www.jianshu.com/p/ca9404cf2f9b) 
 > * [前端MVVM模式从理论到实战 （四）](https://www.jianshu.com/p/56f859da7a7d) 
 > * [前端MVVM模式从理论到实战 （五）](https://www.jianshu.com/p/160c989e73c1) 
-> * [前端MVVM模式从理论到实战 （六）](https://www.jianshu.com/p/faff382af115) 待续。。。
+> * [前端MVVM模式从理论到实战 （六）](https://www.jianshu.com/p/faff382af115) 
+> * [前端MVVM模式从理论到实战 （七）](https://www.jianshu.com/p/3bf0b4d76611) 待续。。。
 
-> 不定时更新,并会同步更新到简书上
+> 不定时更新
+
 [简书](https://www.jianshu.com/u/fdc9dbfc5a32)
