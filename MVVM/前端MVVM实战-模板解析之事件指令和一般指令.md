@@ -1,5 +1,3 @@
-## 前端MVVM模式从理论到实战 （六）
-
 ### 模板解析 
 > * 解析双括号   
 > * v-on绑定事件   
@@ -9,7 +7,7 @@
 > * v-model绑定事件 
 
 
-上一章进行了双括号的解析，接下来开始对事件指令进行解析
+上一章对双括号进行了解析，接下来开始对事件指令进行解析
 
 #### v-on指令
 先初始化代码
@@ -34,7 +32,8 @@ var mv = new MvvmVue({
 </script>
 ~~~
 
-要做的是事件绑定，当点击button时，会弹出 haha 的信息
+
+功能需求是事件绑定，当点击button时，会执行我们定义的函数，弹出 haha 的信息
 
 首先要明确的一点是在button元素上，诸如class，id，以及可以自定义的一些如num,index这些都是一个元素节点上的属性，而对于属性可以通过节点的attributes就能轻松的获取到所有的属性。
 
@@ -75,18 +74,38 @@ Compile.prototype.isElement = function (node){
 ...
 ~~~
 
-同大括号解析一样，再创建一个 compileV 函数来专门对v-指令进行一个解析和编译，该函数相对来说比较复杂，先从解析事件v-on开始
+同大括号解析一样，再创建一个 compileV 函数来专门对v-指令进行一个解析和编译，该函数相对来说比较复杂，先从解析事件指令v-on开始
+
 
 ~~~
-...
-if(_self.isElement(node)){
-    // 查看绑定的指令
-    // 这里对v-指令进行解析和编译
-    _self.compileV(node)
+// 进行模板编译
+Compile.prototype.compileFrag=function (el){
+    // 拿到节点中的第一层所有子节点
+    var childNodes = el.childNodes
+    var _self = this
+    Array.prototype.slice.apply(childNodes).forEach(function (node) {
+        // 正则找 {{}} 需要拿到里面的字符串
+        var reg = /\{\{(.*)\}\}/
+        // 判断是否是元素节点
+        if(_self.isElement(node)){
+            // 查看绑定的指令
+            // 这里对v-指令进行解析和编译
+            _self.compileV(node)
+            // 判断是否是文本且节点的内容能否匹配上正则
+        } else if(_self.isText(node) && reg.test(node.textContent)){
+            // 编译大括号模板
+            _self.compileText(node, RegExp.$1)
+
+        }
+        // 如果子节点还有子节点
+        if (node.childNodes && node.childNodes.length) {
+            // 调用实现所有层次节点的编译
+            _self.compileFrag(node);
+        }
+    })
 }
-...
 ~~~
-
+compileV接收一个node参数，node是当前绑定的节点
 ~~~
 ...
 // 对指令进行编译
@@ -119,8 +138,9 @@ Compile.prototype.compileV = function (node){
 }
 ...
 ~~~
-上面主要是对属性的一个辨别和分析，然后需要处理的就是分辨该指令是什么事件的指令，这就需要对使用该指令的节点进行事件绑定，这就涉及到了原生的事件绑定,**注意，最后使用了removeAttribute将属性从节点上删除，这是因为在使用vue的时候，处于安全考虑，也不会把一些指令属性留下来**
+上面主要是对属性的一个辨别和分析，然后需要处理的就是分辨该指令是什么事件（click？mousemove？）的指令，这里就需要对使用该指令的节点进行事件绑定，这就涉及到了原生的事件绑定,**注意，最后使用了removeAttribute将属性从节点上删除，是因为出于安全和代码简洁考虑，不会把一些指令属性留下来**
 
+新增handelFn函数，进行节点的事件绑定
 ~~~
 ...
 // 对指令进行编译
@@ -144,10 +164,10 @@ Compile.prototype.compileV = function (node){
                 // 事件绑定
                 // 在这里做安全判断
                 // 需要判断的是属性值，data中是否有methodes声明，以及是否有匹配的函数
-                if(attrValue && vm.$options.methodes && vm.$options.methodes[attrValue]){
+                if(attrValue && vm.$options.methods && vm.$options.methods[attrValue]){
                     // 另外写一个函数进行事件绑定
                     // 进行函数绑定
-                    _self.handelFn(node, attrName, vm.$options.methodes[attrValue])
+                    _self.handelFn(node, attrName, vm.$options.methods[attrValue])
                 }
             }
 
@@ -179,7 +199,8 @@ Compile.prototype.handelFn = function (node, fnType, fn){
 
 最后来点击一下，button按钮
 
-![](../img/MVVM/7.png)
+![](https://upload-images.jianshu.io/upload_images/13892139-f71aed066185ac61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 成功弹出，解析成功
 
@@ -220,7 +241,7 @@ var mv = new MvvmVue({
 ~~~
 
 
-哦K，回到之前的compileV函数，在这个函数里面，主要是对节点的属性进行一个解析，但是只对v-on指令的解析和事件绑定，接下来继续从这个函数入手，由于处理方式和v-on不同，所以单独来解析上面几个指令
+哦K，回到之前的compileV函数，在这个函数里面，主要是对节点的属性进行一个解析，以及只对v-on指令的解析和事件绑定，接下来加个else继续从这个函数入手，解析上面几个一般指令
 
 ~~~
 ...
@@ -260,10 +281,11 @@ Compile.prototype.compileV = function (node){
 ...
 ~~~
 
-还记得上一章声明的工具函数vUtil吗，指令的处理就全权交给它来处理
+还记得上一章声明的工具函数vUtil吗，指令的属性处理就全权交给它来处理
 
-首先，能明确一点的是，通过compileV解析，能够知道指令名，绑定的节点以及指令上的值，知道这些就好做了，不外乎就是解析值然后再从data中拿值，然后根据相应的指令进行处理
+首先，能明确一点的是，通过compileV解析，能够知道指令名，其绑定的节点以及指令上的值，知道这些就好做了，不外乎就是解析值然后再通过键从data中拿值，最后再根据相应的指令进行各自的处理
 
+敲简单
 ~~~
 // 接收三个参数
 // vm实例 为了拿到data的值
@@ -341,14 +363,50 @@ Compile.prototype.vUtil = {
     }
 }
 ~~~
+最后在compileV中的else中添加处理函数
+~~~
+// 对指令进行编译
+Compile.prototype.compileV = function (node){
+    var _self = this
+    var vm = this._vm
+    var attrs = node.attributes // 得到该node的所有的属性
+    // 遍历该属性数组
+    Array.prototype.slice.apply(attrs).forEach(function (attr) {
+        // 得到指令名字符串 如:v-on:click
+        var attrName = attr.name
+        // 判断是否有指令属性
+        if(attrName.indexOf('v-') === 0 || attrName.indexOf('@') === 0 ){
+            var attrValue = attr.value.trim() // 得到属性的值
+            // 由于事件绑定的处理和其他的指定绑定处理不一样所以分开处理
+            if(attrName.substring(2).indexOf('on')===0 || attrName.indexOf('@') === 0){
+                // 事件绑定
+                // 在这里做安全判断
+                if(attrValue && vm.$options.methods && vm.$options.methods[attrValue]){
+                    // 进行函数绑定
+                    _self.handelFn(node, attrName, vm.$options.methods[attrValue])
+                }
+            } else {
+                // 处理其他指令
+                // 得到对应的指令名 如： html,text
+                var name = attrName.substring(2)
+                _self.vUtil[name] && _self.vUtil[name](vm, node, attrValue)
+            }
 
+            // 最后移除该指令在node上
+            node.removeAttribute(attrName)
+        }
+    })
+
+}
+~~~
 执行下初始代码，如下图
 
-![](../img/MVVM/8.png)
+![8.png](https://upload-images.jianshu.io/upload_images/13892139-fb8035f9f400147d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-所有指令都能正确的取到data里的数据，目前除了v-model，一般指令和事件指令都已解析成功，由于v-model涉及到了双向数据绑定，所以后面会写详细去写。
 
-...还没有完，做一些代码优化，在上一章在对双括号进行解析赋值时用的compileText函数，不过我们是在函数内部直接对node.textContent进行的赋值，这一章里面在vUtil函数里命名了多个指令解析函数，其中text的功能完全可以复用到双括号的解析上，那么把compileText修改一下
+所有指令都能正确的取到data里的数据，目前除了v-model，一般指令和事件指令都已解析成功，由于v-model涉及到了双向数据绑定，在后面双向数据绑定的时候会详细去写。
+
+...还没有完，再做一些代码优化，在上一章对双括号进行解析赋值时使用的compileText函数，不过我们是在函数内部直接对node.textContent进行的赋值，在这一章里面在vUtil函数里命名了多个指令解析函数，其中text的功能完全可以复用到双括号的解析上，那么把compileText修改一下
 
 ~~~
 // 对文本节点进行赋值
@@ -360,3 +418,20 @@ Compile.prototype.compileText = function (node, regStr){
 ~~~
 
 哦K，那么接下来就是数据绑定了....
+
+
+> [前端MVVM理论-MVC和MVP](https://www.jianshu.com/p/e2ac3260c767)
+
+> [前端MVVM理论-MVVM](https://www.jianshu.com/p/7088249276de)
+
+> [前端MVVM实战-常用的几个方法和属性](https://www.jianshu.com/p/ca9404cf2f9b)
+
+> [前端MVVM实战-数据代理](https://www.jianshu.com/p/56f859da7a7d)
+
+> [前端MVVM实战-模板解析之双括号解析](https://www.jianshu.com/p/160c989e73c1)
+
+> [前端MVVM实战-模板解析之事件指令和一般指令](https://www.jianshu.com/p/faff382af115)
+
+> [前端MVVM实战-数据绑定(一)](https://www.jianshu.com/p/3bf0b4d76611)
+
+> [前端MVVM实战-数据绑定(二)](https://www.jianshu.com/p/21592a132f67)

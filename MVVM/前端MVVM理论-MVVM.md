@@ -1,4 +1,4 @@
-##前端MVVM模式从理论到实战 （二）
+## 前端MVVM理论-MVVM
 
 OK来介绍一下现在很火的MVVM模式，其实这个并不是新的开发模式，最主要还是在MVC模式上做了改进，早在WPF上就已经实现了这种模式。
 
@@ -26,3 +26,19 @@ MVC和MVP设计模式的介绍：  [MVC和MVP](https://www.jianshu.com/p/e2ac326
 ![原理图](https://upload-images.jianshu.io/upload_images/13892139-a32b95ccb79526d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 模仿以上流程图来进行一个代码编写，主要去实现数据代理，模板解析，数据绑定，其中比较难的地方在发布订阅那块。由于模块比较多所以会分为几个章节来写。
+
+> [前端MVVM理论-MVC和MVP](https://www.jianshu.com/p/e2ac3260c767)
+
+> [前端MVVM理论-MVVM](https://www.jianshu.com/p/7088249276de)
+
+> [前端MVVM实战-常用的几个方法和属性](https://www.jianshu.com/p/ca9404cf2f9b)
+
+> [前端MVVM实战-数据代理](https://www.jianshu.com/p/56f859da7a7d)
+
+> [前端MVVM实战-模板解析之双括号解析](https://www.jianshu.com/p/160c989e73c1)
+
+> [前端MVVM实战-模板解析之事件指令和一般指令](https://www.jianshu.com/p/faff382af115)
+
+> [前端MVVM实战-数据绑定(一)](https://www.jianshu.com/p/3bf0b4d76611)
+
+> [前端MVVM实战-数据绑定(二)](https://www.jianshu.com/p/21592a132f67)

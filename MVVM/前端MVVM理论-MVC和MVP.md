@@ -1,4 +1,4 @@
-##前端MVVM模式从理论到实战 （一）
+## 前端MVVM理论-MVC和MVP
 
 
 最近在研究mvvm开发模式，仿照着vue写了一套简单的mvvm代码，也顺便来记录一下
@@ -46,3 +46,20 @@ View去调用Presenter， Presenter操作Model , Model 中进行业务计算。 
 ##### 缺点
 1.由于对视图的渲染放在了Presenter中，所以视图和Presenter的交互会过于频繁。如果Presenter过多地渲染了视图，往往会使得它与特定的视图的联系过于紧密。一旦视图需要变更，那么Presenter也需要变更了。
 
+其他文章导航：
+
+> [前端MVVM理论-MVC和MVP](https://www.jianshu.com/p/e2ac3260c767)
+
+> [前端MVVM理论-MVVM](https://www.jianshu.com/p/7088249276de)
+
+> [前端MVVM实战-常用的几个方法和属性](https://www.jianshu.com/p/ca9404cf2f9b)
+
+> [前端MVVM实战-数据代理](https://www.jianshu.com/p/56f859da7a7d)
+
+> [前端MVVM实战-模板解析之双括号解析](https://www.jianshu.com/p/160c989e73c1)
+
+> [前端MVVM实战-模板解析之事件指令和一般指令](https://www.jianshu.com/p/faff382af115)
+
+> [前端MVVM实战-数据绑定(一)](https://www.jianshu.com/p/3bf0b4d76611)
+
+> [前端MVVM实战-数据绑定(二)](https://www.jianshu.com/p/21592a132f67)
