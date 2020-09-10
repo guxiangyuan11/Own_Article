@@ -13,6 +13,7 @@
 - VUE
 
 - other
+> * [容易忘记但又有时会用到的代码片段](https://github.com/guxiangyuan11/Own_Article/blob/master/other/%E5%AE%B9%E6%98%93%E5%BF%98%E8%AE%B0%E4%BD%86%E6%98%AF%E5%8F%88%E6%9C%89%E6%97%B6%E4%BC%9A%E7%94%A8%E5%88%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5.md)
 > * [海外招聘的一些事](https://github.com/guxiangyuan11/Own_Article/blob/master/other/%E5%85%B3%E4%BA%8E%E6%B5%B7%E5%A4%96%E6%8B%9B%E8%81%98%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B.md)
 > * [前端MVVM理论-MVC和MVP](https://www.jianshu.com/p/e2ac3260c767)
 > * [前端MVVM理论-MVVM](https://www.jianshu.com/p/7088249276de)
